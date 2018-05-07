@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>002 Quiz 2</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 4, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 754894, "assessment_type": "multiple-choice", "created": "2015-11-19T01:14:24Z", "prompt": {"relatedLectureIds": ["4010822"], "question": "<p>What does the below code print out?</p><p>if (undefined == null) {</p><p>console.log(\"Moo\")</p><p>} else {</p><p>console.log(\"Zoo\")<br></p><p>}</p>", "feedbacks": ["undefined is in fact equal to null", "Correct they are both equal to each other", "They are actually values that can be checked for equality"], "answers": ["Zoo", "Moo", "Neither it raises an error because null and undefined are not values"]}, "correct_response": ["b"], "updated": "2016-03-06T19:43:04Z", "section": "", "question_plain": "What does the below code print out?if (undefined == null) {console.log(\"Moo\")} else {console.log(\"Zoo\")}", "related_lectures": [{"_class": "lecture", "id": 4010822, "title": "4. What is the difference between == and ===?", "created": "2015-11-15T02:02:55Z", "asset": {"_class": "asset", "id": 4625554, "asset_type": "Video", "title": "4.equality.mp4", "created": "2015-11-15T01:38:20Z"}, "object_index": 6, "url": "/top-javascript-interview-questions-and-answers/learn/v4/t/lecture/4010822"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 754898, "assessment_type": "multiple-choice", "created": "2015-11-19T01:19:55Z", "prompt": {"relatedLectureIds": ["4010812"], "question": "<p>// What does the below code print out?</p><p>console.log(typeof(null));</p>", "feedbacks": ["It should be \"null\" but javascript incorrectly reports the type of null as \"object\".", "Correct, javascript incorrectly reports the type of null as object.", "null is in fact a value and has a type"], "answers": ["&quot;null&quot;", "&quot;object&quot;", "Nothing it raises an exception since null is not a value"]}, "correct_response": ["b"], "updated": "2016-04-18T23:48:04Z", "section": "", "question_plain": "// What does the below code print out?console.log(typeof(null));", "related_lectures": [{"_class": "lecture", "id": 4010812, "title": "3. What are the different types in javascript?", "created": "2015-11-15T02:00:41Z", "asset": {"_class": "asset", "id": 4625556, "asset_type": "Video", "title": "3.types.mp4", "created": "2015-11-15T01:38:23Z"}, "object_index": 5, "url": "/top-javascript-interview-questions-and-answers/learn/v4/t/lecture/4010812"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 754896, "assessment_type": "multiple-choice", "created": "2015-11-19T01:17:29Z", "prompt": {"relatedLectureIds": ["4010822"], "question": "<p>// What does the below code print out?</p><p>if (undefined === null) {</p><p>console.log(\"Moo\")</p><p>} else {</p><p>console.log(\"Zoo\")<br></p><p>}<em></em></p>", "feedbacks": ["With strict equality check both items have to be the same time and this time they are different types.", "undefined and null are not the same types so === will return false", "Nope, the code is valid :)"], "answers": ["Moo", "Zoo", "This raises an exception"]}, "correct_response": ["b"], "updated": "2016-03-06T19:43:04Z", "section": "", "question_plain": "// What does the below code print out?if (undefined === null) {console.log(\"Moo\")} else {console.log(\"Zoo\")}", "related_lectures": [{"_class": "lecture", "id": 4010822, "title": "4. What is the difference between == and ===?", "created": "2015-11-15T02:02:55Z", "asset": {"_class": "asset", "id": 4625554, "asset_type": "Video", "title": "4.equality.mp4", "created": "2015-11-15T01:38:20Z"}, "object_index": 6, "url": "/top-javascript-interview-questions-and-answers/learn/v4/t/lecture/4010822"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 754904, "assessment_type": "multiple-choice", "created": "2015-11-19T01:28:34Z", "prompt": {"relatedLectureIds": ["4010824"], "question": "<p>// What will the below code print out?</p><p>console.log(NaN == \"1\");</p>", "feedbacks": ["NaN equal to ANYTHING is always false, even when compared to itself", "NaN equal to ANYTHING is always false, even when compared to itself", "NaN equal to ANYTHING is always false, even when compared to itself", "NaN equal to ANYTHING is always false, even when compared to itself"], "answers": ["true", "false", "undefined", "it raises an error"]}, "correct_response": ["b"], "updated": "2016-03-06T19:43:04Z", "section": "", "question_plain": "// What will the below code print out?console.log(NaN == \"1\");", "related_lectures": [{"_class": "lecture", "id": 4010824, "title": "5. What is NaN and how can we check for it?", "created": "2015-11-15T02:02:59Z", "asset": {"_class": "asset", "id": 4625544, "asset_type": "Video", "title": "5.nan.mp4", "created": "2015-11-15T01:37:06Z"}, "object_index": 7, "url": "/top-javascript-interview-questions-and-answers/learn/v4/t/lecture/4010824"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

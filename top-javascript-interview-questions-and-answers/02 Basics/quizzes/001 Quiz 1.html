@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>001 Quiz 1</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 866004, "assessment_type": "multiple-choice", "created": "2016-03-06T19:35:37Z", "prompt": {"relatedLectureIds": ["4010806"], "feedbacks": ["\"a\" is passed by value so updates to \"a\" in function foo will NOT be visible outside of the function foo.", "\"b\" being an object is passed by reference, so changes to properties of \"b\" in the function foo WILL be visible outside of the function foo.", "\"a\" is passed by value so updates to \"a\" in function foo will NOT be visible outside of the function foo.", "\"a\" is passed by value so updates to \"a\" in function foo will NOT be visible outside of the function foo and \"b\" being an object is passed by reference, so changes to properties of \"b\" in the function foo WILL be visible outside of the function foo."], "question": "<p>// What will the below code print out?</p>\n\n<pre class=\"prettyprint linenums\">\"use strict\";\nvar a = 1;\nvar b = {};\nfunction foo(x, y) {\n  x = 2;\ny.moo = 3;\n}\n\nfoo(a, b);\nconsole.log(\"a = \" + a + \"; b = \" + JSON.stringify(b));\n</pre>", "answers": ["a = 1; b = {'moo':3}", "a = 1; b = {}", "a = 2; b = {}", "a = 2; b = {'moo':3}"]}, "correct_response": ["a"], "updated": "2016-04-18T16:44:12Z", "section": "", "question_plain": "// What will the below code print out?\n\n\"use strict\";\nvar a = 1;\nvar b = {};\nfunction foo(x, y) {\n  x = 2;\ny.moo = 3;\n}\n\nfoo(a, b);\nconsole.log(\"a = \" + a + \"; b = \" + JSON.stringify(b));", "related_lectures": [{"_class": "lecture", "id": 4010806, "title": "2. Does javascript pass variables by reference or by value?", "created": "2015-11-15T02:00:07Z", "asset": {"_class": "asset", "id": 4824024, "asset_type": "Video", "title": "2.pass-by.mp4", "created": "2015-12-13T20:21:15Z"}, "object_index": 4, "url": "/top-javascript-interview-questions-and-answers/learn/v4/t/lecture/4010806"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 866012, "assessment_type": "multiple-choice", "created": "2016-03-06T19:39:54Z", "prompt": {"relatedLectureIds": ["4010800"], "feedbacks": ["In NON-strict mode we can use any variable even if it's hasn't been defined with var", "", "", "Look closely!"], "question": "<pre class=\"prettyprint linenums\">// What will the below code print out?<br>var asimsVar = 3;<br>asimVar = 1;<br>console.log(asimVar)<br></pre>", "answers": ["1", "it throws an error", "undefined", "3"]}, "correct_response": ["a"], "updated": "2016-04-28T18:09:42Z", "section": "", "question_plain": "// What will the below code print out?var asimsVar = 3;asimVar = 1;console.log(asimVar)", "related_lectures": [{"_class": "lecture", "id": 4010800, "title": "1. What is \"use strict\" and what does it do?", "created": "2015-11-15T01:59:30Z", "asset": {"_class": "asset", "id": 4625552, "asset_type": "Video", "title": "1.usestrict.mp4", "created": "2015-11-15T01:38:19Z"}, "object_index": 3, "url": "/top-javascript-interview-questions-and-answers/learn/v4/t/lecture/4010800"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 866018, "assessment_type": "multiple-choice", "created": "2016-03-06T19:42:15Z", "prompt": {"relatedLectureIds": ["4010800"], "feedbacks": ["", "In strict mode we can't use variables that have not been declared with var first, check the code closely you will see that \"asimVar\" is spelt differently to \"asimsVar\"", "", "In strict mode we can't use variables that have not been declared with var first, check the code closely you will see that \"asimVar\" is spelt differently to \"asimsVar\""], "question": "<p>// What will the below code print out?</p><pre class=\"prettyprint linenums\">\"use strict\";<br>var asimsVar = 3;<br>asimVar = 1;<br>console.log(asimVar);<br></pre>", "answers": ["3", "1", "undefined", "it throws an error"]}, "correct_response": ["d"], "updated": "2016-04-28T18:09:42Z", "section": "", "question_plain": "// What will the below code print out?\"use strict\";var asimsVar = 3;asimVar = 1;console.log(asimVar);", "related_lectures": [{"_class": "lecture", "id": 4010800, "title": "1. What is \"use strict\" and what does it do?", "created": "2015-11-15T01:59:30Z", "asset": {"_class": "asset", "id": 4625552, "asset_type": "Video", "title": "1.usestrict.mp4", "created": "2015-11-15T01:38:19Z"}, "object_index": 3, "url": "/top-javascript-interview-questions-and-answers/learn/v4/t/lecture/4010800"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>
